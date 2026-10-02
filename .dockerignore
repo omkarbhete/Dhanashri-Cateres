@@ -1,0 +1,8 @@
+node_modules
+dist
+.git
+.qodo
+.env
+.env.*
+!.env.example
+npm-debug.log*
