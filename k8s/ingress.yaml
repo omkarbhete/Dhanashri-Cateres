@@ -1,0 +1,23 @@
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: new-dhanashri-catering
+  annotations:
+    cert-manager.io/cluster-issuer: letsencrypt-prod
+spec:
+  ingressClassName: traefik
+  tls:
+    - hosts:
+        - dhanashricatering.work.gd
+      secretName: dhanashri-site-tls
+  rules:
+    - host: dhanashricatering.work.gd
+      http:
+        paths:
+          - path: /
+            pathType: Prefix
+            backend:
+              service:
+                name: new-dhanashri-catering
+                port:
+                  number: 80
